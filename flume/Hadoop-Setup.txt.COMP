@@ -1,0 +1,121 @@
+# Added the below for the hadoop installation path in bashrc
+export HADOOP_PREFIX=/home/prasanna/Installed/hadoop
+export HADOOP_HOME=${HADOOP_PREFIX}
+export HADOOP_CONF_DIR=${HADOOP_PREFIX}/etc/hadoop
+export HUE_HOME=/home/prasanna/Installed/hue
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HUE_HOME/build/env/bin
+
+#Added it in vi core-site.xml
+<configuration>
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://localhost:8020</value>
+	</property>
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/home/prasanna/Projects/Mywork/Hadoop/tmp</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.prasanna.hosts</name>
+		<value>*</value>
+	</property>
+	<property>
+		<name>hadoop.proxyuser.prasanna.groups</name>
+		<value>*</value>
+	</property>
+</configuration>
+
+## Added in hdfs-site.xml
+<configuration>
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value>/home/prasanna/Projects/Mywork/Hadoop/name</value>
+	</property>
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value>/home/prasanna/Projects/Mywork/Hadoop/data</value>
+	</property>
+	<property>
+		<name>dfs.namenode.http.address</name>
+		<value>localhost:50070</value>
+	</property>
+	<property>
+		<name>dfs.webhdfs.enabled</name>
+		<value>true</value>
+	</property>	
+</configuration>
+
+## Added in vi yarn-site.xml
+<configuration>
+	<property>
+		<name>yarn.resourcemanager.hostname</name>
+		<value>localhost</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.aux-services</name>
+		<value>mapreduce_shuffle</value>
+	</property>
+	<property>
+		<name>yarn.log-aggregation-enable</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.remote-app-log-dir</name>
+		<value>hdfs://localhost:8020/log/</value>
+	</property>
+</configuration>
+
+cp mapred-site.xml.template mapred-site.xml
+
+## Added in vi mapred-site.xml
+<configuration>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+	<property>
+		<name>mapreduce.jobhistory.address</name>
+		<value>localhost:10020</value>
+	</property>
+	<property>
+		<name>mapreduce.jobhistory.webapp.address</name>
+		<value>localhost:19888</value>
+	</property>
+</configuration>
+
+
+
+
+sudo apt-get install gcc g++ libxml2-dev libxslt-dev libsasl2-dev libsasl2-modules-gssapi-mit libmysqlclient-dev python-dev python-setuptools libsqlite3-dev ant libsasl2-dev libsasl2-modules-gssapi-mit libkrb5-dev libtidy-0.99-0 libldap2-dev libssl-dev libgmp3-dev
+
+
+
+
+<property>
+<name>javax.jdo.option.ConnectionURL</name>
+<value>jdbc:mysql://localhost/hive</value>
+<description>JDBC connect string for a JDBC metastore</description>
+</property>
+<property>
+<name>javax.jdo.option.ConnectionDriverName</name>
+<value>com.mysql.jdbc.Driver</value>
+<description>Driver class name for a JDBC metastore</description>
+</property>
+<property>
+<name>javax.jdo.option.ConnectionUserName</name>
+<value>root</value>
+<description>username to use against metastore database</description>
+</property>
+<property>
+<name>javax.jdo.option.ConnectionPassword</name>
+<value>root</value>
+<description>password to use against metastore database</description>
+</property>
+<property>
+<name>datanucleus.autoCreateSchema</name>
+<value>false</value>
+</property>
+<property>
+<name>datanucleus.fixedDatastore</name>
+<value>true</value>
+</property>
