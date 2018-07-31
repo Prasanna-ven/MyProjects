@@ -1,0 +1,6 @@
+mytup = ('red','blue','green')
+print(mytup+('voilate','black','yellow'))
+print(mytup*2)
+print(mytup[2])
+print(mytup[0:2])
+print(mytup.count('red'))
